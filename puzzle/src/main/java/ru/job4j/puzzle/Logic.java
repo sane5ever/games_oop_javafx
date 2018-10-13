@@ -66,13 +66,45 @@ public class Logic {
         return rst;
     }
 
+    /**
+     * проверяет ячейки всех горизонталей и вертикалей (до первой успешной) на наличие выигрышной комбинации
+     * @return true, если выигрышная линия найдена
+     */
     public boolean isWin() {
         int[][] table = this.convert();
         boolean result = false;
+        for (int index = 0; index < this.size; index++) {
+          if (this.checkTheLine(index, 0, 0, 1, table)
+                || this.checkTheLine(0, index, 1, 0, table)) {
+              result = true;
+              break;
+          }
+        }
+        return result;
+    }
+    /**
+     * проверяет ячейки определённой параметрами линии (горизонталь/вертикаль) в матрице на передаваемое в параметрах условие
+     * @param x номер столбца начальной ячейки матрицы
+     * @param y номер строки начальной ячейки матрицы
+     * @param dx приращение по столбцам при движении по проверяемой линии
+     * @param dy приращение по строкам при движении по проверяемой линии
+     * @param table матрица, в кот. осуществляется проверка
+     * @return true, если заданное условие выполняется в каждой ячейке заданной линии матрицы
+     */
+    private boolean checkTheLine(int x, int y, int dx, int dy, int[][] table) {
+        boolean result = true;
+        for (int index = 0; index != this.size; index++) {
+            if (table[x][y] != 1) {
+                result = false;
+                break;
+            }
+            x += dx;
+            y += dy;
+        }
         return result;
     }
 
-    private int[][] convert() {
+    int[][] convert() {
         int[][] table = new int[this.size][this.size];
         for (int row = 0; row != table.length; row++) {
             for (int cell = 0; cell != table.length; cell++) {
