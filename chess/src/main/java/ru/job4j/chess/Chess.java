@@ -127,7 +127,7 @@ public class Chess extends Application {
         this.add(new RookWhite(Cell.A1), grid);
         this.add(new KnightWhite(Cell.B1), grid);
         this.add(new BishopWhite(Cell.C1), grid);
-        this.add(new QeenWhite(Cell.D1), grid);
+        this.add(new QueenWhite(Cell.D1), grid);
         this.add(new KingWhite(Cell.E1), grid);
         this.add(new BishopWhite(Cell.F1), grid);
         this.add(new KnightWhite(Cell.G1), grid);
