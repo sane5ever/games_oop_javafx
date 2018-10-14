@@ -12,7 +12,7 @@ import java.util.Optional;
  * @version $Id$
  * @since 0.1
  */
-public class Logic {
+public class Board {
     private final Figure[] figures = new Figure[32];
     private int index = 0;
 
