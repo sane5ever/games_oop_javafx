@@ -12,13 +12,18 @@ import ru.job4j.chess.firuges.Figure;
  * @since 0.1
  */
 public class Board {
-    /** хранилище фигур */
+    /**
+     * хранилище фигур
+     */
     private final Figure[] figures = new Figure[32];
-    /** указатель на первую свободную ячейку в массиве с фигурами */
+    /**
+     * указатель на первую свободную ячейку в массиве с фигурами
+     */
     private int index = 0;
 
     /**
      * добавление шахматной фигуры на поле
+     *
      * @param figure фигура
      */
     public void add(Figure figure) {
@@ -27,11 +32,12 @@ public class Board {
 
     /**
      * обеспечивает ход в игре
+     *
      * @param source клетка, с кот. осуществляется ход
-     * @param dest клетка, на кот. осуществляется ход
+     * @param dest   клетка, на кот. осуществляется ход
      * @return true, если ход удался
      * @throws ImpossibleMoveException ход противоречит правилам движения фигуры
-     * @throws OccupiedWayException препятствие на пути фигуры
+     * @throws OccupiedWayException    препятствие на пути фигуры
      * @throws FigureNotFoundException в клетка, с кот. осуществляется ход, нет фигуры
      */
     public boolean move(Cell source, Cell dest) throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
@@ -59,6 +65,7 @@ public class Board {
 
     /**
      * ищет фигуру в хранилище с заданной клеткой
+     *
      * @param cell клетка доски
      * @return номер ячейки в массиве фигур, при её отсутствии -1
      */
@@ -75,6 +82,7 @@ public class Board {
 
     /**
      * проверяет, явл. ли заданная последовательность клеток незанятой фигурами из хранилища
+     *
      * @param steps массив клеток
      * @return true, если все клетки свободны
      */

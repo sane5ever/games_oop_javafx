@@ -14,7 +14,7 @@ public class KingWhite extends Figure {
         if (Math.abs(source.x - dest.x) > 1 || Math.abs(source.y - dest.y) > 1) {
             throw new ImpossibleMoveException("King moves wrong!");
         }
-        return new Cell[] {dest};
+        return new Cell[]{dest};
     }
 
     @Override

@@ -14,7 +14,7 @@ public class PawnWhite extends Figure {
         if (source.y != dest.y - 1 || source.x != dest.x) {
             throw new ImpossibleMoveException("Pawn moves wrong!");
         }
-        return new Cell[] {dest};
+        return new Cell[]{dest};
     }
 
     @Override

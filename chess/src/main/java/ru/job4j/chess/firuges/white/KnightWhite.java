@@ -14,7 +14,7 @@ public class KnightWhite extends Figure {
         if (isNotL(source, dest)) {
             throw new ImpossibleMoveException("Knight moves wrong!");
         }
-        return new Cell[] {dest};
+        return new Cell[]{dest};
     }
 
     @Override
