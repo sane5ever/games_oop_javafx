@@ -4,9 +4,10 @@ import ru.job4j.chess.exeptions.*;
 import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
 
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 /**
- * //TODO add comments.
- *
  * @author Petr Arsentev (parsentev@yandex.ru)
  * @version $Id$
  * @since 0.1
@@ -57,9 +58,8 @@ public class Board {
      * очистищает массив с фигурами (используется при сбросе игры)
      */
     public void clean() {
-        for (int position = 0; position != this.figures.length; position++) {
-            this.figures[position] = null;
-        }
+        IntStream.range(0, this.figures.length)
+                .forEach(position -> this.figures[position] = null);
         this.index = 0;
     }
 
@@ -70,14 +70,9 @@ public class Board {
      * @return номер ячейки в массиве фигур, при её отсутствии -1
      */
     private int findBy(Cell cell) {
-        int rst = -1;
-        for (int index = 0; index != this.figures.length; index++) {
-            if (this.figures[index] != null && this.figures[index].position().equals(cell)) {
-                rst = index;
-                break;
-            }
-        }
-        return rst;
+        return IntStream.range(0, this.figures.length)
+                .filter(index -> this.figures[index] != null && this.figures[index].position().equals(cell))
+                .findFirst().orElse(-1);
     }
 
     /**
@@ -87,13 +82,7 @@ public class Board {
      * @return true, если все клетки свободны
      */
     private boolean isNotEmpty(Cell[] steps) {
-        boolean result = false;
-        for (Cell step : steps) {
-            if (this.findBy(step) != -1) {
-                result = true;
-                break;
-            }
-        }
-        return result;
+        return Arrays.stream(steps)
+                .anyMatch(step -> this.findBy(step) != -1);
     }
 }
